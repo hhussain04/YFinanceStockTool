@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Graph</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Stock Graph</h1>
+        <div id="graph"></div>
+        <script>
+            var graphData = JSON.parse('{{ graph_data | tojson }}');
+            console.log(graphData); // Debugging: Check the graph data in the browser console
+
+            if (graphData && graphData.length > 0) {
+                Plotly.newPlot('graph', graphData, { title: 'Stock Prices', xaxis: { title: 'Date' }, yaxis: { title: 'Price' } });
+            } else {
+                console.error("Graph data is empty or not structured correctly.");
+            }
+        </script>
+        <a href="{{ url_for('index') }}" style="text-decoration: none;"><button>Back to Home</button></a>
+    </div>
+</body>
+</html>

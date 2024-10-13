@@ -1,0 +1,144 @@
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #121212; /* Black main theme */
+    color: #e0e0e0; /* Light grey text */
+    margin: 0;
+    padding: 0;
+    font-size: 18px; /* Increased text size */
+}
+
+.container {
+    width: 80%;
+    max-width: 800px; /* Adjusted max-width for square shape */
+    height: 800px; /* Added height for square shape */
+    margin: auto;
+    padding: 30px; /* Increased padding */
+    background-color: #1e1e1e; /* Dark grey container */
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    margin-top: 50px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.container:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
+h1 {
+    text-align: center;
+    color: #8A3324; /* Burnt Sienna */
+    margin-bottom: 20px;
+    font-size: 2em; /* Increased font size */
+}
+
+input, button {
+    display: block;
+    width: 100%;
+    padding: 14px; /* Increased padding */
+    margin: 14px 0; /* Increased margin */
+    font-size: 18px; /* Increased font size */
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #2c2c2c; /* Darker grey input/button background */
+    color: #e0e0e0; /* Light grey text */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+input:focus, button:focus {
+    outline: none;
+    border-color: #8A3324; /* Burnt Sienna */
+}
+
+button {
+    background-color: #8A3324; /* Burnt Sienna */
+    color: #fff;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #6B2A1F; /* Darker Burnt Sienna */
+    transform: translateY(-2px);
+}
+
+.social-link:hover {
+    background-color: #555;
+    transform: scale(1.05);
+}
+
+.date-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin: 20px 0;
+}
+
+.date-buttons a {
+    flex: 1;
+    margin: 10px;
+    text-align: center;
+    text-decoration: none; /* Remove hyperlink underlining */
+}
+
+.date-buttons button {
+    width: 100%;
+    padding: 14px; /* Increased padding */
+    margin: 0;
+    font-size: 18px; /* Increased font size */
+    border: 1px solid #333;
+    border-radius: 8px;
+    box-sizing: border-box;
+    background-color: #6B2A1F; /* Darker grey input/button background */
+    color: #fff; /* Light grey text */
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.date-buttons button:hover {
+    background-color: #913a2a; /* Slightly lighter grey on hover */
+    transform: scale(1.05);
+}
+
+#graph {
+    width: 100%;
+    height: 400px; /* Adjusted height for rectangular shape */
+    border: 2px solid #8A3324; /* Burnt Sienna */
+    border-radius: 8px;
+    background-color: #1e1e1e; /* Dark grey background */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#graph:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 20px; /* Increased padding */
+        height: auto; /* Adjusted height for responsiveness */
+    }
+
+    h1 {
+        font-size: 1.8em; /* Increased font size */
+    }
+
+    input, button {
+        font-size: 16px; /* Increased font size */
+        padding: 12px; /* Increased padding */
+    }
+
+    .date-buttons {
+        flex-direction: column;
+    }
+
+    .date-buttons button {
+        margin: 10px 0;
+    }
+
+    #graph {
+        height: 400px; /* Adjusted height for responsiveness */
+    }
+}

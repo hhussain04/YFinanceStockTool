@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stock Market Data</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>YFinanceStockTool</h1>
+        <form action="{{ url_for('add_ticker') }}" method="post">
+            <label for="company_name">Enter Company Name or Ticker:</label>
+            <input type="text" id="company_name" name="company_name">
+            <button type="submit">Add Ticker</button>
+        </form>
+        <div class="date-buttons">
+            <a href="{{ url_for('view_tickers') }}"><button>View Selected Tickers</button></a>
+            <a href="{{ url_for('clear_tickers') }}"><button>Clear Tickers</button></a>
+        </div>
+
+        <div class="date-buttons">
+            <a href="{{ url_for('show_graph', period='3mo') }}"><button>Show 3 Month</button></a>
+            <a href="{{ url_for('show_graph', period='6mo') }}"><button>Show 6 Month</button></a>
+            <a href="{{ url_for('show_graph', period='1y') }}"><button>Show 1 Year</button></a>
+            <a href="{{ url_for('show_graph', period='5y') }}"><button>Show 5 Year</button></a>
+            <a href="{{ url_for('show_graph', period='10y') }}"><button>Show 10 Year</button></a>
+            <a href="{{ url_for('show_graph', period='max') }}"><button>Show Max</button></a>
+        </div>
+
+        <div class="date-buttons">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    <ul>
+                        {% for category, message in messages %}
+                            <li class="{{ category }}">{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='scripts.js') }}"></script>
+</body>
+</html>
