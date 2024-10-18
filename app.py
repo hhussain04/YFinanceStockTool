@@ -43,7 +43,7 @@ def index():
 
 @app.route('/add_ticker', methods=['POST'])
 def add_ticker():
-    company_name = request.form['company_name'].strip().upper()
+    company_name = request.form['company_name'].strip()
     if company_name:
         ticker = get_ticker(company_name)
         if ticker and ticker not in selected_tickers:
