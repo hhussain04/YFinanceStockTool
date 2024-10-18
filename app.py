@@ -4,6 +4,7 @@ import pandas as pd
 import plotly.graph_objs as go # type: ignore
 from dotenv import load_dotenv
 import os
+import csv
 
 load_dotenv()
 app = Flask(__name__)
@@ -13,15 +14,15 @@ app.secret_key = os.getenv("SECRET_KEY")
 # Global variable to store tickers
 selected_tickers = []
 
+ticker_mappings = {}
+with open('tickers.csv', mode='r') as infile:
+    reader = csv.reader(infile)
+    next(reader)  # Skip header row
+    for rows in reader:
+        ticker_mappings[rows[0].strip().upper()] = rows[1].strip().upper()
+
 def get_ticker(company_name):
-    try:
-        # Search for the ticker symbol based on the company name
-        search_result = yf.Ticker(company_name)
-        if search_result.history(period="1d").empty:
-            raise ValueError(f"No data found for {company_name}")
-        return search_result.ticker
-    except Exception:
-        return None
+    return ticker_mappings.get(company_name.upper())
 
 def get_data(tickers, period):
     combined_df = pd.DataFrame()
