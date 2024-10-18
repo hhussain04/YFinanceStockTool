@@ -51,7 +51,7 @@ function plotGraph(data) {
             y: values.map(item => item.Close),
             type: 'scatter',
             mode: 'lines',
-            name: company
+            name: company  // Ensure the name is set correctly
         });
     }
 

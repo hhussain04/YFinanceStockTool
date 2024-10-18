@@ -84,7 +84,7 @@ def show_graph(period):
             'x': stock_data['Date'].tolist(),
             'y': stock_data['High'].tolist(),
             'mode': 'lines',
-            'name': ticker
+            'name': ticker  # Ensure the name is set correctly
         })
 
     return render_template('graph.html', graph_data=graph_data)
