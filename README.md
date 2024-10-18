@@ -29,7 +29,7 @@ Follow these steps to set up the project locally:
 
 1. **Clone the repository:**
    ```bash
-   git clone https://github.com/hhussain04/YFinanceStockTool.git
+   git clone https://github.com/yourusername/YFinanceStockTool.git
    ```
 2. **Navigate to the project directory:**
    ```bash
@@ -40,15 +40,7 @@ Follow these steps to set up the project locally:
    pip install -r requirements.txt
    ```
 4. **Set up your environment variables for API keys (if needed).**
-
-5. Generate your own secret key and make a .env file in the root folder of the project, you can use pythons in-built **_secrets_** module for this:
-     ```python
-   import secrets
-   secret_key = secrets.token_hex(32)
-   print(secret_key)
-   ```
-
-7. **Run the application:**
+5. **Run the application:**
    ```bash
    python app.py
    ```

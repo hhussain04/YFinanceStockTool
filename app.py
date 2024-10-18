@@ -2,12 +2,13 @@ from flask import Flask, render_template, request, redirect, url_for, flash
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objs as go
-import secrets
+from dotenv import load_dotenv
+import os
 
+load_dotenv()
 app = Flask(__name__)
+app.secret_key = os.getenv("SECRET_KEY")
 
-# Generate a random secret key on each startup
-app.secret_key = secrets.token_hex(16)
 
 # Global variable to store tickers
 selected_tickers = []
@@ -87,4 +88,5 @@ def view_tickers():
     return render_template('view_tickers.html', tickers=selected_tickers)
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port, debug=True)
