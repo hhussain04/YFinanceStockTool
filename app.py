@@ -15,10 +15,11 @@ selected_tickers = []
 
 def get_ticker(company_name):
     try:
-        ticker = yf.Ticker(company_name)
-        if ticker.history(period="1d").empty:
+        # Search for the ticker symbol based on the company name
+        search_result = yf.Ticker(company_name)
+        if search_result.history(period="1d").empty:
             raise ValueError(f"No data found for {company_name}")
-        return company_name
+        return search_result.ticker
     except Exception:
         return None
 
@@ -49,7 +50,7 @@ def add_ticker():
             selected_tickers.append(ticker)
             flash(f"{ticker} added to the list.", "success")
         else:
-            flash(f"{ticker} is already in the list or invalid.", "error")
+            flash(f"{company_name} is already in the list or invalid.", "error")
     else:
         flash("Please enter a company name or ticker.", "error")
     return redirect(url_for('index'))
