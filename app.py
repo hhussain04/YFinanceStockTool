@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request, redirect, url_for, flash
 import yfinance as yf
 import pandas as pd
-import plotly.graph_objs as go
+import plotly.graph_objs as go # type: ignore
 from dotenv import load_dotenv
 import os
 
