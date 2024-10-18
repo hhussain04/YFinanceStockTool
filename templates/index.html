@@ -16,8 +16,8 @@
         <div class="date-buttons">
             <a href="{{ url_for('view_tickers') }}"><button>View Selected Tickers</button></a>
             <a href="{{ url_for('clear_tickers') }}"><button>Clear Tickers</button></a>
+            <a href="{{ url_for('search') }}"><button>Search Company Names and Tickers</button></a>
         </div>
-
         <div class="date-buttons">
             <a href="{{ url_for('show_graph', period='3mo') }}"><button>Show 3 Month</button></a>
             <a href="{{ url_for('show_graph', period='6mo') }}"><button>Show 6 Month</button></a>
@@ -26,7 +26,6 @@
             <a href="{{ url_for('show_graph', period='10y') }}"><button>Show 10 Year</button></a>
             <a href="{{ url_for('show_graph', period='max') }}"><button>Show Max</button></a>
         </div>
-
         <div class="date-buttons">
             {% with messages = get_flashed_messages(with_categories=true) %}
                 {% if messages %}

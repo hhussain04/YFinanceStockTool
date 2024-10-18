@@ -93,6 +93,16 @@ def show_graph(period):
 def view_tickers():
     return render_template('view_tickers.html', tickers=selected_tickers)
 
+@app.route('/search', methods=['GET', 'POST'])
+def search():
+    results = []
+    if request.method == 'POST':
+        search_query = request.form['search_query'].strip().upper()
+        results = [(name, ticker) for name, ticker in ticker_mappings.items() if search_query in name or search_query in ticker]
+        if not results:
+            flash("No results found.", "error")
+    return render_template('search.html', results=results)
+
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))
     app.run(host='0.0.0.0', port=port, debug=True)
