@@ -22,7 +22,11 @@ with open('tickers.csv', mode='r') as infile:
         ticker_mappings[rows[0].strip().upper()] = rows[1].strip().upper()
 
 def get_ticker(company_name):
-    return ticker_mappings.get(company_name.upper())
+    company_name = company_name.upper()
+    for name, ticker in ticker_mappings.items():
+        if company_name in name:
+            return ticker
+    return None
 
 def get_data(tickers, period):
     combined_df = pd.DataFrame()
