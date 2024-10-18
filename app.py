@@ -21,10 +21,10 @@ with open('tickers.csv', mode='r') as infile:
     for rows in reader:
         ticker_mappings[rows[0].strip().upper()] = rows[1].strip().upper()
 
-def get_ticker(company_name):
-    company_name = company_name.upper()
+def get_ticker(query):
+    query = query.upper()
     for name, ticker in ticker_mappings.items():
-        if company_name in name:
+        if query in name or query == ticker:
             return ticker
     return None
 
@@ -98,7 +98,7 @@ def search():
     results = []
     if request.method == 'POST':
         search_query = request.form['search_query'].strip().upper()
-        results = [(name, ticker) for name, ticker in ticker_mappings.items() if search_query in name or search_query in ticker]
+        results = [(name, ticker) for name, ticker in ticker_mappings.items() if search_query in name or search_query == ticker]
         if not results:
             flash("No results found.", "error")
     return render_template('search.html', results=results)
