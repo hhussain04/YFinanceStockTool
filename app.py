@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
+from flask import Flask, render_template, request, redirect, url_for, flash, session
 import yfinance as yf
 import pandas as pd
 import plotly.graph_objs as go # type: ignore
@@ -48,14 +48,22 @@ def index():
 
 @app.route('/add_ticker', methods=['POST'])
 def add_ticker():
-    company_name = request.form['company_name'].strip()
+    company_name = request.form['company_name'].strip().upper()
     if company_name:
-        ticker = get_ticker(company_name)
-        if ticker and ticker not in selected_tickers:
-            selected_tickers.append(ticker)
-            flash(f"{ticker} added to the list.", "success")
+        results = [(name, ticker) for name, ticker in ticker_mappings.items() if company_name in name or company_name == ticker]
+        if not results:
+            flash("No results found.", "error")
+        elif len(results) == 1:
+            ticker = results[0][1]
+            if ticker not in selected_tickers:
+                selected_tickers.append(ticker)
+                flash(f"{ticker} added to the list.", "success")
+            else:
+                flash(f"{ticker} is already in the list.", "error")
+            return redirect(url_for('index'))
         else:
-            flash(f"{company_name} is already in the list or invalid.", "error")
+            session['search_results'] = results
+            return redirect(url_for('select_ticker'))
     else:
         flash("Please enter a company name or ticker.", "error")
     return redirect(url_for('index'))
@@ -101,7 +109,32 @@ def search():
         results = [(name, ticker) for name, ticker in ticker_mappings.items() if search_query in name or search_query == ticker]
         if not results:
             flash("No results found.", "error")
+        elif len(results) == 1:
+            ticker = results[0][1]
+            if ticker not in selected_tickers:
+                selected_tickers.append(ticker)
+                flash(f"{ticker} added to the list.", "success")
+            else:
+                flash(f"{ticker} is already in the list.", "error")
+            return redirect(url_for('index'))
+        else:
+            flash("Multiple matches found. Please refine your search.", "error")
     return render_template('search.html', results=results)
+
+@app.route('/select_ticker', methods=['GET', 'POST'])
+def select_ticker():
+    if request.method == 'POST':
+        selected_ticker = request.form['selected_ticker']
+        if selected_ticker and selected_ticker not in selected_tickers:
+            selected_tickers.append(selected_ticker)
+            flash(f"{selected_ticker} added to the list.", "success")
+        else:
+            flash(f"{selected_ticker} is already in the list or invalid.", "error")
+        return redirect(url_for('index'))
+    results = session.get('search_results', [])
+    return render_template('select_ticker.html', results=results)
+
+
 
 if __name__ == '__main__':
     port = int(os.environ.get('PORT', 5000))

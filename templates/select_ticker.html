@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Select Ticker</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h1>Select Ticker</h1>
+        <form action="{{ url_for('select_ticker') }}" method="post">
+            <label for="selected_ticker">Multiple matches found. Please select one:</label>
+            <select id="selected_ticker" name="selected_ticker" class="dropdown-menu">
+                {% for company, ticker in results %}
+                    <option value="{{ ticker }}" title="{{ company }} - {{ ticker }}">{{ company }} - {{ ticker }}</option>
+                {% endfor %}
+            </select>
+            <button type="submit">Select</button>
+        </form>
+        <a href="{{ url_for('index') }}" style="text-decoration: none;"><button>Back to Home</button></a>
+    </div>
+</body>
+</html>

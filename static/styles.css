@@ -1,19 +1,19 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background-color: #121212; /* Black main theme */
-    color: #e0e0e0; /* Light grey text */
+    background-color: #121212;
+    color: #e0e0e0;
     margin: 0;
     padding: 0;
-    font-size: 18px; /* Increased text size */
+    font-size: 18px;
 }
 
 .container {
     width: 80%;
-    max-width: 800px; /* Adjusted max-width for square shape */
-    height: 800px; /* Added height for square shape */
+    max-width: 800px;
+    height: 800px;
     margin: auto;
-    padding: 30px; /* Increased padding */
-    background-color: #1e1e1e; /* Dark grey container */
+    padding: 30px;
+    background-color: #1e1e1e;
     box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
     border-radius: 12px;
     margin-top: 50px;
@@ -27,39 +27,39 @@ body {
 
 h1 {
     text-align: center;
-    color: #8A3324; /* Burnt Sienna */
+    color: #8A3324;
     margin-bottom: 20px;
-    font-size: 2em; /* Increased font size */
+    font-size: 2em;
 }
 
 input, button {
     display: block;
     width: 100%;
-    padding: 14px; /* Increased padding */
-    margin: 14px 0; /* Increased margin */
-    font-size: 18px; /* Increased font size */
+    padding: 14px;
+    margin: 14px 0;
+    font-size: 18px;
     border: 1px solid #333;
     border-radius: 8px;
     box-sizing: border-box;
-    background-color: #2c2c2c; /* Darker grey input/button background */
-    color: #e0e0e0; /* Light grey text */
+    background-color: #2c2c2c;
+    color: #e0e0e0;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 input:focus, button:focus {
     outline: none;
-    border-color: #8A3324; /* Burnt Sienna */
+    border-color: #8A3324;
 }
 
 button {
-    background-color: #8A3324; /* Burnt Sienna */
+    background-color: #8A3324;
     color: #fff;
     border: none;
     cursor: pointer;
 }
 
 button:hover {
-    background-color: #6B2A1F; /* Darker Burnt Sienna */
+    background-color: #6B2A1F;
     transform: translateY(-2px);
 }
 
@@ -79,33 +79,33 @@ button:hover {
     flex: 1;
     margin: 10px;
     text-align: center;
-    text-decoration: none; /* Remove hyperlink underlining */
+    text-decoration: none;
 }
 
 .date-buttons button {
     width: 100%;
-    padding: 14px; /* Increased padding */
+    padding: 14px;
     margin: 0;
-    font-size: 18px; /* Increased font size */
+    font-size: 18px;
     border: 1px solid #333;
     border-radius: 8px;
     box-sizing: border-box;
-    background-color: #6B2A1F; /* Darker grey input/button background */
-    color: #fff; /* Light grey text */
+    background-color: #6B2A1F;
+    color: #fff;
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 .date-buttons button:hover {
-    background-color: #913a2a; /* Slightly lighter grey on hover */
+    background-color: #913a2a;
     transform: scale(1.05);
 }
 
 #graph {
     width: 100%;
-    height: 400px; /* Adjusted height for rectangular shape */
-    border: 2px solid #8A3324; /* Burnt Sienna */
+    height: 400px;
+    border: 2px solid #8A3324;
     border-radius: 8px;
-    background-color: #1e1e1e; /* Dark grey background */
+    background-color: #1e1e1e;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
@@ -117,17 +117,17 @@ button:hover {
 @media (max-width: 768px) {
     .container {
         width: 95%;
-        padding: 20px; /* Increased padding */
-        height: auto; /* Adjusted height for responsiveness */
+        padding: 20px;
+        height: auto;
     }
 
     h1 {
-        font-size: 1.8em; /* Increased font size */
+        font-size: 1.8em;
     }
 
     input, button {
-        font-size: 16px; /* Increased font size */
-        padding: 12px; /* Increased padding */
+        font-size: 16px;
+        padding: 12px;
     }
 
     .date-buttons {
@@ -139,6 +139,32 @@ button:hover {
     }
 
     #graph {
-        height: 400px; /* Adjusted height for responsiveness */
+        height: 400px;
     }
+}
+
+.dropdown-menu {
+    width: 100%;
+    max-width: 100%;
+    padding: 10px;
+    border: 2px solid #8A3324;
+    border-radius: 8px;
+    background-color: #1e1e1e;
+    color: #ffffff;
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.dropdown-menu option {
+    background-color: #1e1e1e;
+    color: #ffffff;
+    padding: 8px;
+    white-space: normal;
+    word-break: break-word;
+}
+
+.dropdown-menu option:hover {
+    background-color: #8A3324;
+    position: relative;
+    z-index: 1;
 }
