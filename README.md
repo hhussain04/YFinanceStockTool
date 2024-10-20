@@ -52,7 +52,6 @@ Follow these steps to set up the project locally:
    Create a `.env` file in the project directory and add the following:
    ```
    SECRET_KEY=your_secret_key
-   ALPHA_VANTAGE_API_KEY=your_alpha_vantage_api_key
    ```
 
 ## Usage
